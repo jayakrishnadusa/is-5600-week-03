@@ -1,18 +1,138 @@
+/* Global styles */
 :root {
   --spacing-medium: 1rem;
   --spacing-small: 0.5rem;
+  --primary-color: #4e8bf0;
+  --accent-color: #f0a500;
+  --background-color: #f5f7fa;
+  --text-color: #333;
+  --message-bg-color: #ffffff;
+  --button-hover-color: #ff8a00;
 }
 
 body {
-  font-family: 'avenir next', avenir, sans-serif;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  height:100vh;
-  padding:var(--spacing-medium);
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  padding: var(--spacing-medium);
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient Background */
+  color: var(--text-color);
+}
+
+h4 {
+  text-align: center;
+  color: #fff;
+}
+
+#messages {
+  overflow-y: scroll;
+  flex-grow: 1;
+  margin-bottom: var(--spacing-medium);
+  padding: var(--spacing-small);
+  background-color: var(--message-bg-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-small);
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 input {
-  width: 100%;
-  padding:var(--spacing-small);
+  width: 85%;
+  padding: var(--spacing-small);
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: var(--primary-color);
+}
+
+button {
+  padding: var(--spacing-small) 1rem;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--button-hover-color);
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Add a simple fade-in animation for the messages */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.message {
+  padding: var(--spacing-small);
+  margin-bottom: var(--spacing-small);
+  border-radius: 10px;
+  background-color: var(--message-bg-color);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.message h3 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.message p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.message .author {
+  font-weight: bold;
+}
+
+/* Speech Bubble Animation */
+#speech-bubble {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  display: none;
+  animation: speechBubbleFadeIn 2s ease-out forwards;
+}
+
+/* Keyframe animation for speech bubble */
+@keyframes speechBubbleFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+body:hover #speech-bubble {
+  display: block;
 }
